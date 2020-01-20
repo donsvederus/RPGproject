@@ -47,6 +47,10 @@ namespace RPG.Combat
         // Animaiton Event
         void Hit()
         {
+            if(target == null)
+            {
+                return;
+            }
             target.TakeDamage(weaponDamage);
         }
 
@@ -73,10 +77,14 @@ namespace RPG.Combat
 
         public void Cancel()
         {
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            StopAttack();
             target = null;
         }
 
-
+        private void StopAttack()
+        {
+            GetComponent<Animator>().SetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
+        }
     }
 }
